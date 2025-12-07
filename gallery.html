@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery Pro</title>
+    <link rel="stylesheet" href="gallery.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="ri-gallery-fill"></i>
+                <h1>Photo Gallery</h1>
+            </div>
+            <div class="header-actions">
+                <button id="addPhotoBtn" class="btn btn-primary">
+                    <i class="ri-add-line"></i> Add Photo
+                </button>
+            </div>
+        </header>
+
+        <main class="gallery-container">
+            <!-- Main Viewer -->
+            <div class="viewer-section">
+                <button id="prevBtn" class="nav-btn" title="Previous Photo">
+                    <i class="ri-arrow-left-s-line"></i>
+                </button>
+
+                <div class="image-stage">
+                    <div id="loadingIndicator" class="loading hidden">
+                        <div class="spinner"></div>
+                    </div>
+                    <img id="currentImage" src="" alt="Gallery Image" class="main-image hidden">
+
+                    <div id="emptyState" class="empty-state">
+                        <i class="ri-image-add-line"></i>
+                        <p>Gallery is empty</p>
+                        <button class="btn btn-text" onclick="document.getElementById('addPhotoBtn').click()">Add your
+                            first photo</button>
+                    </div>
+
+                    <div id="imageOverlay" class="image-overlay hidden">
+                        <h2 id="imageTitle">Photo Name</h2>
+                        <button id="deleteBtn" class="btn btn-danger-icon" title="Delete Photo">
+                            <i class="ri-delete-bin-line"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button id="nextBtn" class="nav-btn" title="Next Photo">
+                    <i class="ri-arrow-right-s-line"></i>
+                </button>
+            </div>
+
+            <!-- Filmstrip / List View -->
+            <div class="filmstrip-section">
+                <h3>Gallery Stream</h3>
+                <div id="filmstrip" class="filmstrip">
+                    <!-- Thumbnails generated here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Photo Modal -->
+    <div id="photoModal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Add New Photo</h2>
+                <button id="closeModalBtn" class="close-btn"><i class="ri-close-line"></i></button>
+            </div>
+            <form id="photoForm">
+                <div class="form-group">
+                    <label for="photoName">Photo Name (Keyword)</label>
+                    <input type="text" id="photoName" required placeholder="e.g. mountain, coffee, tech..." autofocus>
+                    <small>We'll generate an image based on this name.</small>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add to Gallery</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="gallery.js"></script>
+</body>
+
+</html>
